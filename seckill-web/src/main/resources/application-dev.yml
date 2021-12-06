@@ -1,0 +1,31 @@
+spring:
+  application:
+    name: seckill
+  jackson:
+    time-zone: GMT+8
+    date-format: com.fasterxml.jackson.databind.util.StdDateFormat
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://${DB_HOST:localhost}:${DB_PORT:3306}/seckill?useUnicode=true&characterEncoding=utf-8
+    username: ${DB_USER:root}
+    password: ${DB_PWD:123456}
+    hikari:
+      minimum-idle: 5
+      connection-test-query: SELECT 1 FROM dual
+      connection-timeout: 30000
+      maximum-pool-size: 20
+      max-lifetime: 60000
+      idle-timeout: 30000
+  redis:
+    redisson:
+      file: classpath:redisson-config.yml
+logging:
+  config: classpath:log4j2-spring.xml
+  level:
+    org.springframework.web: debug
+    org.redisson.client: debug
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: true
+    cache-enabled: false
+    log-impl: org.apache.ibatis.logging.slf4j.Slf4jImpl
