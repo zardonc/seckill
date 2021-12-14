@@ -19,6 +19,15 @@ spring:
   redis:
     redisson:
       file: classpath:redisson-config.yml
+  thymeleaf:
+    cache: false # 开发环境关闭页面缓存
+    mode: HTML5
+    encoding: UTF-8
+    servlet:
+      content-type: text/html
+    prefix: classpath:/templates/
+    suffix: .html
+    check-template-location: true
 logging:
   config: classpath:log4j2-spring.xml
   level:
