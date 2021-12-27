@@ -3,6 +3,7 @@ package org.seckill.dao;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Param;
 import org.seckill.entity.Goods;
+import org.seckill.vo.GoodsVo;
 
 import java.util.List;
 
@@ -16,4 +17,8 @@ public interface GoodsMapper extends BaseMapper<Goods> {
     int insertOrUpdate(Goods record);
 
     int insertOrUpdateSelective(Goods record);
+
+    List<GoodsVo> goodsVoList();
+
+    GoodsVo goodsVoByGoodsId(@Param("goodsId") Long goodsId);
 }

@@ -12,9 +12,25 @@
     <result column="goods_price" jdbcType="DECIMAL" property="goodsPrice" />
     <result column="goods_stock" jdbcType="INTEGER" property="goodsStock" />
   </resultMap>
+  <resultMap id="BaseResultMapGoodsVo" type="org.seckill.vo.GoodsVo">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="goods_name" jdbcType="VARCHAR" property="goodsName" />
+    <result column="goods_title" jdbcType="VARCHAR" property="goodsTitle" />
+    <result column="goods_img" jdbcType="VARCHAR" property="goodsImg" />
+    <result column="goods_detail" jdbcType="LONGVARCHAR" property="goodsDetail" />
+    <result column="goods_price" jdbcType="DECIMAL" property="goodsPrice" />
+    <result column="goods_stock" jdbcType="INTEGER" property="goodsStock" />
+    <result column="miaosha_price" jdbcType="DECIMAL" property="seckillPrice"/>
+    <result column="stock_count" jdbcType="INTEGER" property="stockCount"/>
+    <result column="start_date" jdbcType="TIMESTAMP" property="startDate"/>
+    <result column="end_date" jdbcType="TIMESTAMP" property="endDate"/>
+  </resultMap>
   <sql id="Base_Column_List">
     <!--@mbg.generated-->
     id, goods_name, goods_title, goods_img, goods_detail, goods_price, goods_stock
+  </sql>
+  <sql id="GoodsVo_Column">
+    miaosha_goods.id as id, goods_name, goods_title, goods_img, goods_detail, goods_price, goods_stock, miaosha_price, stock_count, start_date, end_date
   </sql>
   <update id="updateBatch" parameterType="java.util.List">
     <!--@mbg.generated-->
@@ -233,4 +249,18 @@
       </if>
     </trim>
   </insert>
+
+    <select id="goodsVoList" resultMap="BaseResultMapGoodsVo">
+        select
+        <include refid="GoodsVo_Column"/>
+        from miaosha_goods
+                     left join goods on miaosha_goods.goods_id = goods.id
+    </select>
+
+  <select id="goodsVoByGoodsId" resultMap="BaseResultMapGoodsVo">
+    select
+    <include refid="GoodsVo_Column"/>
+    from miaosha_goods
+    left join goods on miaosha_goods.goods_id = #{goodsId,jdbcType=BIGINT}
+  </select>
 </mapper>
