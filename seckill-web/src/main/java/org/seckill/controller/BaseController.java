@@ -17,7 +17,7 @@ import java.nio.charset.StandardCharsets;
 @Controller
 public class BaseController {
     // 页面缓存
-    @Value("#{'${pageCache.enable}'}")
+    @Value("${spring.thymeleaf.cache}")
     private boolean pageCacheEnable;
 
     @Resource
@@ -40,7 +40,7 @@ public class BaseController {
     }
 
     public String render(HttpServletRequest request, HttpServletResponse response, Model model, String tplName) {
-        if (!pageCacheEnable) {
+        if (pageCacheEnable) {
             return tplName;
         }
         //取缓存
