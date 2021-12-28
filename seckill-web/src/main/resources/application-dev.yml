@@ -33,6 +33,7 @@ logging:
   level:
     org.springframework.web: debug
     org.redisson.client: debug
+    com.zaxxer.hikari: warn
 mybatis-plus:
   configuration:
     map-underscore-to-camel-case: true
