@@ -1,5 +1,7 @@
 package org.seckill.vo;
 
+import org.seckill.entity.MiaoshaUser;
+
 /**
  * 功能描述: 秒杀详情页商品信息
  * 〈〉
@@ -11,7 +13,7 @@ public class GoodsDetailVo {
     private Integer miaoshaStatus = 0;
     private Integer remainSeconds = 0;
     private GoodsVo goods;
-    private UserVo user;
+    private MiaoshaUser user;
 
     public Integer getMiaoshaStatus() {
         return miaoshaStatus;
@@ -37,11 +39,21 @@ public class GoodsDetailVo {
         this.goods = goods;
     }
 
-    public UserVo getUser() {
+    public MiaoshaUser getUser() {
         return user;
     }
 
-    public void setUser(UserVo user) {
+    public void setUser(MiaoshaUser user) {
         this.user = user;
+    }
+
+    @Override
+    public String toString() {
+        return "GoodsDetailVo{" +
+                "miaoshaStatus=" + miaoshaStatus +
+                ", remainSeconds=" + remainSeconds +
+                ", goods=" + goods +
+                ", user=" + user +
+                '}';
     }
 }

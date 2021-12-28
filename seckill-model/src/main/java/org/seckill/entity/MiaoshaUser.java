@@ -5,7 +5,7 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 @TableName(value = "miaosha_user")
 public class MiaoshaUser {
@@ -37,13 +37,13 @@ public class MiaoshaUser {
      * 注册时间
      */
     @TableField(value = "register_date")
-    private Date registerDate;
+    private LocalDateTime registerDate;
 
     /**
      * 上蔟登录时间
      */
     @TableField(value = "last_login_date")
-    private Date lastLoginDate;
+    private LocalDateTime lastLoginDate;
 
     /**
      * 登录次数
@@ -138,7 +138,7 @@ public class MiaoshaUser {
      *
      * @return register_date - 注册时间
      */
-    public Date getRegisterDate() {
+    public LocalDateTime getRegisterDate() {
         return registerDate;
     }
 
@@ -147,7 +147,7 @@ public class MiaoshaUser {
      *
      * @param registerDate 注册时间
      */
-    public void setRegisterDate(Date registerDate) {
+    public void setRegisterDate(LocalDateTime registerDate) {
         this.registerDate = registerDate;
     }
 
@@ -156,7 +156,7 @@ public class MiaoshaUser {
      *
      * @return last_login_date - 上蔟登录时间
      */
-    public Date getLastLoginDate() {
+    public LocalDateTime getLastLoginDate() {
         return lastLoginDate;
     }
 
@@ -165,7 +165,7 @@ public class MiaoshaUser {
      *
      * @param lastLoginDate 上蔟登录时间
      */
-    public void setLastLoginDate(Date lastLoginDate) {
+    public void setLastLoginDate(LocalDateTime lastLoginDate) {
         this.lastLoginDate = lastLoginDate;
     }
 

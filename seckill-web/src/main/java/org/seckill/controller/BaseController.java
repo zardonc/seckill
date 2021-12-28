@@ -43,6 +43,7 @@ public class BaseController {
         if (pageCacheEnable) {
             return tplName;
         }
+        // TODO 缓存渲染数据
         //取缓存
 //        String html = (String) redisService.get(prefix, key, String.class);
         String html = "";

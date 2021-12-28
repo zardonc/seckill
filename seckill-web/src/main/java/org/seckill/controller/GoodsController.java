@@ -1,8 +1,10 @@
 package org.seckill.controller;
 
 import org.seckill.base.BaseResponse;
+import org.seckill.base.StatusCode;
 import org.seckill.entity.MiaoshaUser;
 import org.seckill.service.GoodsService;
+import org.seckill.vo.GoodsDetailVo;
 import org.seckill.vo.GoodsVo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,6 +26,7 @@ public class GoodsController extends BaseController {
     @Resource
     private GoodsService goodsService;
 
+    // 秒杀商品列表
     @RequestMapping("/to_list")
     @ResponseBody
     public String goodsList(HttpServletRequest request, HttpServletResponse response,
@@ -33,5 +36,20 @@ public class GoodsController extends BaseController {
         log.info("result list {}", goodsListResult.getData());
         model.addAttribute("goodsList", goodsListResult.getData());
         return render(request, response, model, "goods_list");
+    }
+
+    // 秒杀详情
+    @RequestMapping("/to_detail")
+    @ResponseBody
+    public BaseResponse<GoodsDetailVo> goodsDetail(MiaoshaUser user, String goodsId) {
+        BaseResponse<GoodsDetailVo> result = goodsService.goodsVoById(Long.valueOf(goodsId));
+        log.info("return detail {}", result.getData());
+        if (!result.getCode().equals(StatusCode.SUCCESS.getCode())) {
+            return result;
+        }
+        GoodsDetailVo detailVo = result.getData();
+        detailVo.setUser(user);
+        result.setData(detailVo);
+        return result;
     }
 }

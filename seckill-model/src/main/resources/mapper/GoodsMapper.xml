@@ -250,17 +250,19 @@
     </trim>
   </insert>
 
-    <select id="goodsVoList" resultMap="BaseResultMapGoodsVo">
-        select
-        <include refid="GoodsVo_Column"/>
-        from miaosha_goods
-                     left join goods on miaosha_goods.goods_id = goods.id
-    </select>
+  <select id="goodsVoList" resultMap="BaseResultMapGoodsVo">
+    select
+    <include refid="GoodsVo_Column"/>
+    from miaosha_goods
+                 left join goods on miaosha_goods.goods_id = goods.id
+  </select>
 
   <select id="goodsVoByGoodsId" resultMap="BaseResultMapGoodsVo">
     select
     <include refid="GoodsVo_Column"/>
     from miaosha_goods
-    left join goods on miaosha_goods.goods_id = #{goodsId,jdbcType=BIGINT}
+                 left join goods
+            on miaosha_goods.goods_id = goods.id
+    where miaosha_goods.goods_id = #{goodsId,jdbcType=BIGINT}
   </select>
 </mapper>
