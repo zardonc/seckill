@@ -1,6 +1,7 @@
 package org.seckill.service;
 
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.redisson.api.RBucket;
 import org.redisson.api.RedissonClient;
 import org.seckill.entity.MiaoshaUser;
@@ -65,6 +66,22 @@ public class RandomValidateCodeService {
         RBucket<String> keyBucket = redissonClient.getBucket(realKey);
         keyBucket.set(randomString, keyObj.getExpTTL(), keyObj.getTimeUnit());
         return image;
+    }
+
+    public boolean checkVerifyCode(MiaoshaUser user, long goodsId, String verifyCode) {
+        if (user == null || goodsId <= 0) {
+            return false;
+        }
+        MiaoshaKey keyObj = MiaoshaKey.getMiaoshaVerifyCodeKey;
+        String realKey = keyObj.getPrefix() + user.getNickname() + ":" + goodsId;
+        RBucket<String> redissonClientBucket = redissonClient.getBucket(realKey);
+        String curCode = redissonClientBucket.get();
+        //验证验证码 是否 正确
+        if (StringUtils.isEmpty(curCode) || !curCode.equals(verifyCode)) {
+            return false;
+        }
+        redissonClientBucket.delete();
+        return true;
     }
 
     // 字体
