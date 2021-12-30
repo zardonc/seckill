@@ -4,6 +4,7 @@ import org.seckill.base.BaseResponse;
 import org.seckill.base.StatusCode;
 import org.seckill.entity.MiaoshaUser;
 import org.seckill.service.GoodsService;
+import org.seckill.service.MiaoshaBizService;
 import org.seckill.service.RandomValidateCodeService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -31,6 +32,9 @@ public class miaoshaController {
     @Resource
     private RandomValidateCodeService validateCodeService;
 
+    @Resource
+    private MiaoshaBizService miaoshaBizService;
+
     @RequestMapping("/verifyCode")
     @ResponseBody
     public BaseResponse<String> getMiaoshaVerifyCode(HttpServletResponse response, MiaoshaUser user,
@@ -52,4 +56,19 @@ public class miaoshaController {
         return result;
     }
 
+    @RequestMapping("/path")
+    @ResponseBody
+    public BaseResponse<String> getMiaoshaPath(MiaoshaUser user
+            , @RequestParam("goodsId") long goodsId
+            , @RequestParam(value = "verifyCode", defaultValue = "0") String verifyCode) {
+        if (user == null) {// 校验登录信息
+            return BaseResponse.errorWithData(StatusCode.USER_NOT_LOGIN, StatusCode.USER_NOT_LOGIN.getMsg());
+        }
+        boolean checkFlag = validateCodeService.checkVerifyCode(user, goodsId, verifyCode);
+        if (!checkFlag) {// 校验页面验证码
+            return BaseResponse.errorWithData(StatusCode.VERIFY_CODE_FAILED, StatusCode.VERIFY_CODE_FAILED.getMsg());
+        }
+        BaseResponse<String> pathResult = miaoshaBizService.createMiaoshaPath(user, goodsId);
+        return BaseResponse.SuccessWithData(pathResult.getData());
+    }
 }

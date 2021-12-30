@@ -29,6 +29,8 @@
         <ttl.ver>2.13.0-Beta1</ttl.ver>
         <redisson.ver>3.16.4</redisson.ver>
         <validator.ver>7.0.1.Final</validator.ver>
+        <commons-codec.ver>1.15</commons-codec.ver>
+        <hutool.ver>5.7.18</hutool.ver>
     </properties>
 
     <parent>
@@ -94,6 +96,18 @@
                 <groupId>org.hibernate.validator</groupId>
                 <artifactId>hibernate-validator</artifactId>
                 <version>${validator.ver}</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/commons-codec/commons-codec -->
+            <dependency>
+                <groupId>commons-codec</groupId>
+                <artifactId>commons-codec</artifactId>
+                <version>${commons-codec.ver}</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/cn.hutool/hutool-all -->
+            <dependency>
+                <groupId>cn.hutool</groupId>
+                <artifactId>hutool-all</artifactId>
+                <version>${hutool.ver}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
