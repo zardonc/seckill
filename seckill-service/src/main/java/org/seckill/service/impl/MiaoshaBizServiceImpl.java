@@ -1,6 +1,7 @@
 package org.seckill.service.impl;
 
 import cn.hutool.core.lang.UUID;
+import org.apache.commons.lang3.StringUtils;
 import org.redisson.api.RBucket;
 import org.redisson.api.RedissonClient;
 import org.seckill.base.BaseResponse;
@@ -35,5 +36,20 @@ public class MiaoshaBizServiceImpl implements MiaoshaBizService {
         RBucket<String> keyBucket = redissonClient.getBucket(cacheKey);
         keyBucket.set(cacheKey, miaoshaKey.getExpTTL(), miaoshaKey.getTimeUnit());
         return result;
+    }
+
+    @Override
+    public BaseResponse<Boolean> verifyMiaoshaPath(MiaoshaUser user, Long goodsId, String path) {
+        Boolean verifyFlag = false;
+        if (StringUtils.isBlank(path)) {
+            return BaseResponse.errorWithData(StatusCode.DATA_NOT_EXISTS, verifyFlag);
+        }
+        MiaoshaKey miaoshaKey = MiaoshaKey.getMiaoshaPathKey;
+        String pathKey = miaoshaKey.getPrefix() + user.getNickname() + "_" + goodsId;
+        RBucket<String> keyBucket = redissonClient.getBucket(pathKey);
+        if (keyBucket.get().equals(path)) {
+            verifyFlag = true;
+        }
+        return BaseResponse.SuccessWithData(verifyFlag);
     }
 }
