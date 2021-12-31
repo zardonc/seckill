@@ -39,3 +39,18 @@ mybatis-plus:
     map-underscore-to-camel-case: true
     cache-enabled: false
     log-impl: org.apache.ibatis.logging.slf4j.Slf4jImpl
+#zk客户端配置重试次数
+zookeeper:
+  retryCount: 5
+  #重试间隔时间
+  elapsedTimeMs: 5000
+  # zookeeper 地址
+  connectString: ${ZK_HOST:localhost}:${ZK_PORT:2181}
+  # session超时时间
+  sessionTimeoutMs: 60000
+  # 连接超时时间
+  connectionTimeoutMs: 5000
+  # 锁节点的根地址
+  lockPath: /Lock
+  # 锁默认等待时间 (秒)
+  lockWaitTime: 15

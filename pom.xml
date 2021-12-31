@@ -31,6 +31,8 @@
         <validator.ver>7.0.1.Final</validator.ver>
         <commons-codec.ver>1.15</commons-codec.ver>
         <hutool.ver>5.7.18</hutool.ver>
+        <curator.ver>5.2.0</curator.ver>
+        <zookeeper.ver>3.7.0</zookeeper.ver>
     </properties>
 
     <parent>
@@ -108,6 +110,18 @@
                 <groupId>cn.hutool</groupId>
                 <artifactId>hutool-all</artifactId>
                 <version>${hutool.ver}</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/org.apache.curator/curator-recipes -->
+            <dependency>
+                <groupId>org.apache.curator</groupId>
+                <artifactId>curator-recipes</artifactId>
+                <version>${curator.ver}</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/org.apache.zookeeper/zookeeper -->
+            <dependency>
+                <groupId>org.apache.zookeeper</groupId>
+                <artifactId>zookeeper</artifactId>
+                <version>${zookeeper.ver}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
