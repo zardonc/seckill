@@ -1,4 +1,4 @@
-package org.seckill.config;
+package org.seckill.zk_manager.config;
 
 import org.apache.curator.framework.CuratorFramework;
 import org.apache.curator.framework.CuratorFrameworkFactory;
