@@ -33,6 +33,18 @@ public class LockInfo {
         this.lockPath = lockPath;
     }
 
+    public void setNode(String node) {
+        this.node = node;
+    }
+
+    public void setLastNode(String lastNode) {
+        this.lastNode = lastNode;
+    }
+
+    public void setLockPath(String lockPath) {
+        this.lockPath = lockPath;
+    }
+
     /**
      * 获取当前节点位置路径
      *
