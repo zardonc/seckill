@@ -1,7 +1,9 @@
 package org.seckill.zk_manager.lockinfo;
+
 /**
  * 功能描述: zk锁基本信息
  * 〈〉
+ *
  * @Param:
  * @Return:
  * @Author: lang
@@ -10,7 +12,7 @@ public class LockInfo {
     /**
      * 临时目录分隔符
      */
-    public final static String SEPARATOR_CHARACTER="/";
+    public final static String SEPARATOR_CHARACTER = "/";
     /**
      * 当前锁节点
      */
@@ -30,18 +32,22 @@ public class LockInfo {
     public LockInfo(String lockPath) {
         this.lockPath = lockPath;
     }
+
     /**
      * 获取当前节点位置路径
+     *
      * @return
      */
-    public String getNodePath(){
-        return lockPath+SEPARATOR_CHARACTER+node;
+    public String getNodePath() {
+        return lockPath + SEPARATOR_CHARACTER + node;
     }
+
     /**
      * 获取当前前一个节点位置路径
+     *
      * @return
      */
-    public String getLastNodePath(){
-        return lockPath+SEPARATOR_CHARACTER+lastNode;
+    public String getLastNodePath() {
+        return lockPath + SEPARATOR_CHARACTER + lastNode;
     }
 }

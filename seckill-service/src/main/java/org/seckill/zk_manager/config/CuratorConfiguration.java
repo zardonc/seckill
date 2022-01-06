@@ -10,19 +10,19 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class CuratorConfiguration {
     // 重试次数
-    @Value("$(zookeeper.retryCount)")
+    @Value("#{T(java.lang.Integer).parseInt('${zookeeper.retryCount}')}")
     private Integer retryCount;
     // 连接超时时间
-    @Value("$(zookeeper.elapsedTimeMs)")
+    @Value("#{T(java.lang.Integer).parseInt('${zookeeper.elapsedTimeMs}')}")
     private Integer elapsedTimeMs;
     // zk集群
     @Value("$(zookeeper.connectString)")
     private String connectString;
     // 会话超时时间
-    @Value("$(zookeeper.sessionTimeoutMs)")
+    @Value("#{T(java.lang.Integer).parseInt('${zookeeper.sessionTimeoutMs}')}")
     private Integer sessionTimeoutMs;
     // 连接超时时间
-    @Value("$(zookeeper.connectionTimeoutMs)")
+    @Value("#{T(java.lang.Integer).parseInt('${zookeeper.connectionTimeoutMs}')}")
     private Integer connectionTimeoutMs;
 
     @Bean
