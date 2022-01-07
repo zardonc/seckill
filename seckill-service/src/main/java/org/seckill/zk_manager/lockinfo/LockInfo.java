@@ -41,8 +41,8 @@ public class LockInfo {
         this.lastNode = lastNode;
     }
 
-    public void setLockPath(String lockPath) {
-        this.lockPath = lockPath;
+    public String getLockPath() {
+        return lockPath;
     }
 
     /**
