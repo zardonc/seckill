@@ -19,7 +19,7 @@ import javax.annotation.Resource;
 @Component
 public class LockInfoProvider {
     public static final String LOCK_NAME_SEPARATOR = "/";
-    @Value("${curator.lockPath}")
+    @Value("${zookeeper.lockPath}")
     private String LOCK_NAME_PREFIX;
     @Resource
     private BusinessKeyProvider businessKeyProvider;

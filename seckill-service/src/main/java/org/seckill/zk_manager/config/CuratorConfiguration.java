@@ -25,7 +25,7 @@ public class CuratorConfiguration {
     @Value("#{T(java.lang.Integer).parseInt('${zookeeper.connectionTimeoutMs}')}")
     private Integer connectionTimeoutMs;
 
-    @Bean
+    @Bean(name = "myCuratorFramework")
     public CuratorFramework curatorFramework() {
         CuratorFramework curatorFramework = CuratorFrameworkFactory.builder()
                 .connectString(connectString)

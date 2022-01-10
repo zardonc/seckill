@@ -32,7 +32,7 @@ public class ZkLockAspect {
     ThreadLocal<LockInfo> currentThreadLock = new ThreadLocal<>();
     @Resource
     private LockInfoProvider lockInfoProvider;
-    @Resource
+    @Resource(name = "myCuratorFramework")
     private CuratorFramework zkClient;
 
     /**
