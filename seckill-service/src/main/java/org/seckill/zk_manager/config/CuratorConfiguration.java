@@ -16,7 +16,7 @@ public class CuratorConfiguration {
     @Value("#{T(java.lang.Integer).parseInt('${zookeeper.elapsedTimeMs}')}")
     private Integer elapsedTimeMs;
     // zk集群
-    @Value("$(zookeeper.connectString)")
+    @Value("${zookeeper.connectString}")
     private String connectString;
     // 会话超时时间
     @Value("#{T(java.lang.Integer).parseInt('${zookeeper.sessionTimeoutMs}')}")
