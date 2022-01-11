@@ -192,3 +192,7 @@ gen
 hs_err_pid*
 
 /WebAppLogs/
+/seckill-web/target/
+/seckill-service/target/
+/seckill-model/target/
+/seckill-common/target/
