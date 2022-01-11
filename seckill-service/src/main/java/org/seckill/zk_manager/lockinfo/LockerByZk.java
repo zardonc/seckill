@@ -31,7 +31,7 @@ public class LockerByZk implements InitializingBean {
      * 获取分布式锁
      */
     public void acquireDistributedLock(String path) {
-        String keyPath = "/" + LOCK_NAME_PREFIX + "/" + path;
+        String keyPath = LOCK_NAME_PREFIX + "/" + path;
         while (true) {
             try {
                 curatorFramework
@@ -62,7 +62,7 @@ public class LockerByZk implements InitializingBean {
      * 释放分布式锁
      */
     public boolean releaseDistributedLock(String path) {
-        String keyPath = "/" + LOCK_NAME_PREFIX + "/" + path;
+        String keyPath = LOCK_NAME_PREFIX + "/" + path;
         try {
             if (curatorFramework.checkExists().forPath(keyPath) != null) {
                 curatorFramework.delete().forPath(keyPath);
@@ -82,7 +82,7 @@ public class LockerByZk implements InitializingBean {
         if (path.equals(LOCK_NAME_PREFIX)) {
             keyPath = "/" + path;
         } else {
-            keyPath = "/" + LOCK_NAME_PREFIX + "/" + path;
+            keyPath = LOCK_NAME_PREFIX + "/" + path;
         }
         final CuratorCache cache = CuratorCache.build(curatorFramework, keyPath);
         CuratorCacheListener listener = CuratorCacheListener
@@ -104,7 +104,7 @@ public class LockerByZk implements InitializingBean {
     @Override
     public void afterPropertiesSet() throws Exception {
         curatorFramework = curatorFramework.usingNamespace("lock-namespace");
-        String path = "/" + LOCK_NAME_PREFIX;
+        String path = LOCK_NAME_PREFIX;
         try {
             if (curatorFramework.checkExists().forPath(path) == null) {
                 curatorFramework

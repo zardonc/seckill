@@ -45,7 +45,7 @@ zookeeper:
   #重试间隔时间
   elapsedTimeMs: 5000
   # zookeeper 地址
-  connectString: ${ZK_HOST:localhost}:${ZK_PORT:2181}
+  connectString: ${ZK_HOST:localhost}:${ZK_PORT:2181},${ZK_HOST:localhost}:${ZK_PORT:2182},${ZK_HOST:localhost}:${ZK_PORT:2183}
   # session超时时间
   sessionTimeoutMs: 60000
   # 连接超时时间
