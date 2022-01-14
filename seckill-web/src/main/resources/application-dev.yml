@@ -29,7 +29,7 @@ spring:
     suffix: .html
     check-template-location: true
 logging:
-  config: classpath:log4j2-spring.xml
+  config: classpath:logback-spring.xml
   level:
     org.springframework.web: debug
     org.redisson.client: debug

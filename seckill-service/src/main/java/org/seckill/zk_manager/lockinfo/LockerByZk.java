@@ -80,7 +80,7 @@ public class LockerByZk implements InitializingBean {
     private void addWatcher(String path) throws Exception {
         String keyPath;
         if (path.equals(LOCK_NAME_PREFIX)) {
-            keyPath = "/" + path;
+            keyPath = path;
         } else {
             keyPath = LOCK_NAME_PREFIX + "/" + path;
         }
@@ -89,7 +89,7 @@ public class LockerByZk implements InitializingBean {
                 .builder()
                 .forNodeCache(new NodeCacheListener() {
                     public void nodeChanged() throws Exception {
-                        log.info(keyPath + "v节点监听事件触发");
+                        log.info(keyPath + " 节点监听事件触发");
                         countDownLatch.countDown();
                     }
                 })
