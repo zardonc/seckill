@@ -135,6 +135,7 @@ public class ZkLockAspect {
         CuratorCacheListener listener = CuratorCacheListener
                 .builder()
                 .forNodeCache(new NodeCacheListener() {
+                    @Override
                     public void nodeChanged() throws Exception {
                         log.info(currentThreadLock.get().getLastNodePath() + "v节点监听事件触发");
                         latch.countDown();
