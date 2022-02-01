@@ -3,10 +3,12 @@ import org.seckill.SecondKillApplication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.test.context.ActiveProfiles;
 
 import java.util.concurrent.TimeUnit;
 
 @SpringBootTest(classes = SecondKillApplication.class)
+@ActiveProfiles(value = "dev")
 public class RedisTemplateTest {
     @Autowired
     private RedisTemplate<String, Object> redisTemplate;
