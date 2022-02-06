@@ -1,0 +1,16 @@
+spring:
+  cloud:
+    nacos:
+      discovery:
+        server-addr: http://localhost:8848
+        namespace: dev
+#      config:
+#        server-addr: http://localhost:8848
+#        file-extension: yaml
+#        namespace: dev
+logging:
+  config: classpath:logback-spring.xml
+  level:
+    org.springframework.web: debug
+    org.redisson.client: debug
+    com.zaxxer.hikari: warn

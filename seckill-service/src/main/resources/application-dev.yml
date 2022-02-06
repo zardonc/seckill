@@ -1,0 +1,47 @@
+spring:
+  application:
+    name: seckillService
+  jackson:
+    time-zone: GMT+8
+    date-format: com.fasterxml.jackson.databind.util.StdDateFormat
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/seckill?useUnicode=true&characterEncoding=utf-8
+    username: zardon
+    password: ?Lmyyml123
+    hikari:
+      minimum-idle: 5
+      connection-test-query: SELECT 1 FROM dual
+      connection-timeout: 30000
+      maximum-pool-size: 20
+      max-lifetime: 60000
+      idle-timeout: 30000
+  redis:
+    redisson:
+      file: classpath:redisson-config.yml
+logging:
+  config: classpath:logback-spring.xml
+  level:
+    org.springframework.web: debug
+    org.redisson.client: debug
+    com.zaxxer.hikari: warn
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: true
+    cache-enabled: false
+    log-impl: org.apache.ibatis.logging.slf4j.Slf4jImpl
+#zk客户端配置重试次数
+zookeeper:
+  retryCount: 5
+  #重试间隔时间
+  elapsedTimeMs: 5000
+  # zookeeper 地址
+  connectString: localhost:2181,localhost:2182,localhost:2183
+  # session超时时间
+  sessionTimeoutMs: 60000
+  # 连接超时时间
+  connectionTimeoutMs: 5000
+  # 锁节点的根地址
+  lockPath: /Lock
+  # 锁默认等待时间 (秒)
+  lockWaitTime: 15
