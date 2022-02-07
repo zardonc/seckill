@@ -28,11 +28,6 @@
         </dependency>
         <dependency>
             <groupId>org.seckill</groupId>
-            <artifactId>seckill-service</artifactId>
-            <version>1.0</version>
-        </dependency>
-        <dependency>
-            <groupId>org.seckill</groupId>
             <artifactId>seckill-model</artifactId>
             <version>1.0</version>
         </dependency>
@@ -47,21 +42,11 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-        <!--        &lt;!&ndash;Spring boot 安全框架&ndash;&gt;-->
-        <!--        <dependency>-->
-        <!--            <groupId>org.springframework.boot</groupId>-->
-        <!--            <artifactId>spring-boot-starter-security</artifactId>-->
-        <!--        </dependency>-->
         <!-- spring boot 缓存 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-cache</artifactId>
         </dependency>
-        <!--引入 log4j2-->
-<!--        <dependency>-->
-<!--            <groupId>org.springframework.boot</groupId>-->
-<!--            <artifactId>spring-boot-starter-log4j2</artifactId>-->
-<!--        </dependency>-->
         <!--异步,使用 log4j2 的 AsyncLogger 时需要包含 disruptor-->
         <dependency>
             <groupId>com.lmax</groupId>
@@ -92,9 +77,10 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.redisson/redisson-spring-boot-starter -->
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-validation</artifactId>
+            <groupId>org.redisson</groupId>
+            <artifactId>redisson-spring-boot-starter</artifactId>
         </dependency>
     </dependencies>
 
