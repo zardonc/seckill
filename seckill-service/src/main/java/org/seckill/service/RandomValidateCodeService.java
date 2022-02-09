@@ -1,11 +1,13 @@
 package org.seckill.service;
 
-import lombok.extern.slf4j.Slf4j;
+
 import org.apache.commons.lang3.StringUtils;
 import org.redisson.api.RBucket;
 import org.redisson.api.RedissonClient;
 import org.seckill.entity.MiaoshaUser;
 import org.seckill.redis_manager.rediskeysbean.MiaoshaKey;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -13,9 +15,10 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.concurrent.ThreadLocalRandom;
 
-@Slf4j
+
 @Service
 public class RandomValidateCodeService {
+    private static final Logger log = LoggerFactory.getLogger(RandomValidateCodeService.class);
     private static final ThreadLocalRandom random = ThreadLocalRandom.current();
     // 生成只有数字的字符串
     private String verString = "123456789";
