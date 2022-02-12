@@ -1,0 +1,23 @@
+server:
+  port: 7000
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+    gateway:
+      #简化版
+      discovery:
+        locator:
+          enabled: true #通过注册中心微服务名称就可以使用网关
+      #复杂版
+#      routes: #路由数组【路由：就是指当前请求满足什么条件转发到那个微服务上】
+#        - id: product_route #当前路由的名称（唯一的标识）
+#          uri: lb://service-product #请求需要转发的地址（写死例如：http://localhost:8081）;lb指从nacos注册中心通过服务名称获取微服务地址
+#          order: 1 #路由的优先级，数字越小级别越高
+#          predicates: #断言（就是路由转发需要满足的条件）
+#            - Path=/product-serv/** #请求的路劲满足path规则才转发
+#          filters: #过滤器，请求在传递的过程中可以通过过滤器对其进行操作检查
+#            - StripPrefix=1 #转发前去掉第一层的路劲
