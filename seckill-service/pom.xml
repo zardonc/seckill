@@ -51,6 +51,7 @@
         <dependency>
             <groupId>com.lmax</groupId>
             <artifactId>disruptor</artifactId>
+            <version>${disruptor.ver}</version>
         </dependency>
         <dependency>
             <groupId>com.alibaba.cloud</groupId>
@@ -76,6 +77,14 @@
         <dependency>
             <groupId>org.redisson</groupId>
             <artifactId>redisson-spring-boot-starter</artifactId>
+            <version>${redisson.ver}</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/cn.hutool/hutool-all -->
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-all</artifactId>
+            <version>${hutool.ver}</version>
+        </dependency>
+
     </dependencies>
 </project>

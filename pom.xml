@@ -14,6 +14,7 @@
         <module>seckill-common</module>
         <module>seckill-model</module>
         <module>seckill-gateway</module>
+        <module>seckill-service-api</module>
     </modules>
 
     <properties>
@@ -21,7 +22,7 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
-        <maven.plugin.version>3.9.0</maven.plugin.version>
+        <maven.plugin.version>3.8.1</maven.plugin.version>
         <common-pool.ver>2.11.1</common-pool.ver>
         <common3.ver>3.12.0</common3.ver>
         <mysqlj.ver>8.0.28</mysqlj.ver>
@@ -37,6 +38,7 @@
         <curator.ver>5.2.0</curator.ver>
         <zookeeper.ver>3.7.0</zookeeper.ver>
         <pagehelper.ver>1.4.1</pagehelper.ver>
+        <hutool.ver>5.7.20</hutool.ver>
 
         <alibaba.nacos.version>2.0.4</alibaba.nacos.version>
         <spring.boot.admin.version>2.6.2</spring.boot.admin.version>
@@ -76,13 +78,6 @@
                 <groupId>com.alibaba.cloud</groupId>
                 <artifactId>spring-cloud-alibaba-dependencies</artifactId>
                 <version>${alibaba.cloud.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-            <dependency>
-                <groupId>io.spring.platform</groupId>
-                <artifactId>platform-bom</artifactId>
-                <version>${spring.platform.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
