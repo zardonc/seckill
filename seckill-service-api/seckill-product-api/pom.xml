@@ -3,21 +3,16 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>seckill</artifactId>
+        <artifactId>seckill-service-api</artifactId>
         <groupId>org.seckill</groupId>
         <version>1.0</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>seckill-service-api</artifactId>
+    <artifactId>seckill-product-api</artifactId>
     <name>${project.artifactId}</name>
-    <description>seckill 微服务API集合</description>
-    <packaging>pom</packaging>
-    <modules>
-        <module>seckill-product-api</module>
-        <module>seckill-order-api</module>
-        <module>seckill-user-api</module>
-    </modules>
+    <version>${project.version}</version>
+    <packaging>jar</packaging>
 
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
