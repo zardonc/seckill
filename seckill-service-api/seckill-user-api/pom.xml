@@ -11,7 +11,7 @@
 
     <artifactId>seckill-user-api</artifactId>
     <name>${project.artifactId}</name>
-    <version>${project.version}</version>
+    <version>${seckill.project.version}</version>
     <packaging>jar</packaging>
 
     <properties>
