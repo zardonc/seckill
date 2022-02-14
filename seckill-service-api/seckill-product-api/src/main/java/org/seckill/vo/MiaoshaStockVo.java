@@ -5,7 +5,7 @@ public class MiaoshaStockVo {
     private Integer totalCount;
     // 秒杀开始标记
     private Boolean initStatus;
-    // 已秒杀的商品书数量
+    // 已秒杀的商品数量
     private Integer seckillCount;
 
     public Integer getTotalCount() {
