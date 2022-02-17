@@ -15,6 +15,7 @@
         <module>seckill-model</module>
         <module>seckill-gateway</module>
         <module>seckill-service-api</module>
+        <module>seckill-tools</module>
     </modules>
 
     <properties>
@@ -40,6 +41,7 @@
         <zookeeper.ver>3.7.0</zookeeper.ver>
         <pagehelper.ver>1.4.1</pagehelper.ver>
         <hutool.ver>5.7.20</hutool.ver>
+        <ehcache.version>3.10.0-alpha0</ehcache.version>
 
         <alibaba.nacos.version>2.0.4</alibaba.nacos.version>
         <spring.boot.admin.version>2.6.2</spring.boot.admin.version>

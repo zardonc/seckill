@@ -11,9 +11,6 @@
 
     <artifactId>seckill-common</artifactId>
     <packaging>pom</packaging>
-    <modules>
-        <module>seckill-core-mybatis</module>
-    </modules>
 
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
