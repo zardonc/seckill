@@ -10,6 +10,13 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>seckill-service</artifactId>
+    <name>${project.artifactId}</name>
+    <version>${seckill.project.version}</version>
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>seckill-order</module>
+    </modules>
 
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
@@ -24,12 +31,17 @@
         <dependency>
             <groupId>org.seckill</groupId>
             <artifactId>seckill-common</artifactId>
-            <version>1.0</version>
+            <version>${seckill.project.version}</version>
         </dependency>
         <dependency>
             <groupId>org.seckill</groupId>
             <artifactId>seckill-model</artifactId>
-            <version>1.0</version>
+            <version>${seckill.project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.seckill</groupId>
+            <artifactId>seckill-tools</artifactId>
+            <version>${seckill.project.version}</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-test -->
         <dependency>
