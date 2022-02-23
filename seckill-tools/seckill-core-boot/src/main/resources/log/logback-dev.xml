@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration scan="true" scanPeriod="60 seconds" debug="false">
-    <contextName>logback-spring</contextName>
+    <contextName>logback-dev</contextName>
     <property name="logging.path" value="./logs"/>
 
     <!--0. 日志格式和颜色渲染 -->
@@ -185,14 +185,15 @@
 
     <root level="INFO">
         <appender-ref ref="CONSOLE"/>
-        <appender-ref ref="DEBUG_FILE"/>
-        <appender-ref ref="INFO_FILE"/>
-        <appender-ref ref="WARN_FILE"/>
-        <appender-ref ref="ERROR_FILE"/>
+<!--        <appender-ref ref="DEBUG_FILE"/>-->
+<!--        <appender-ref ref="INFO_FILE"/>-->
+<!--        <appender-ref ref="WARN_FILE"/>-->
+<!--        <appender-ref ref="ERROR_FILE"/>-->
     </root>
 
     <logger name="net.sf.ehcache" level="INFO"/>
     <logger name="druid.sql" level="INFO"/>
+
 
     <!-- MyBatis log configure -->
     <logger name="com.apache.ibatis" level="INFO"/>
@@ -228,6 +229,7 @@
     <logger name="org.apache.http" level="INFO"/>
     <logger name="com.netflix.discovery" level="INFO"/>
     <logger name="com.netflix.eureka" level="INFO"/>
+
     <!-- 业务日志 -->
     <Logger name="org.seckill" level="DEBUG" />
     <Logger name="org.seckill.core" level="INFO"/>
