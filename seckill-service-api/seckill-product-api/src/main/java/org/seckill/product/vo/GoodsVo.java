@@ -1,4 +1,4 @@
-package org.seckill.vo;
+package org.seckill.product.vo;
 
 import lombok.Data;
 

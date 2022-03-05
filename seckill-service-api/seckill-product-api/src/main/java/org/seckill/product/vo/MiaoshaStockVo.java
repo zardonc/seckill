@@ -1,4 +1,4 @@
-package org.seckill.vo;
+package org.seckill.product.vo;
 
 public class MiaoshaStockVo {
     // 秒杀库存总数

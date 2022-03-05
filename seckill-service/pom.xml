@@ -16,6 +16,7 @@
 
     <modules>
         <module>seckill-order</module>
+        <module>seckill-product</module>
     </modules>
 
     <properties>
