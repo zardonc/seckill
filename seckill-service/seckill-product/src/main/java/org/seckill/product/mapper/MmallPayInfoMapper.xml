@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.seckill.product.mapper.MmallPayInfoMapper">
+  <resultMap id="BaseResultMap" type="org.seckill.entity.MmallPayInfo">
+    <!--@mbg.generated-->
+    <!--@Table mmall_pay_info-->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="order_no" jdbcType="BIGINT" property="orderNo" />
+    <result column="pay_platform" jdbcType="INTEGER" property="payPlatform" />
+    <result column="platform_number" jdbcType="VARCHAR" property="platformNumber" />
+    <result column="platform_status" jdbcType="VARCHAR" property="platformStatus" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, user_id, order_no, pay_platform, platform_number, platform_status, create_time, 
+    update_time
+  </sql>
+  <update id="updateBatch" parameterType="java.util.List">
+    <!--@mbg.generated-->
+    update mmall_pay_info
+    <trim prefix="set" suffixOverrides=",">
+      <trim prefix="user_id = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=INTEGER} then #{item.userId,jdbcType=INTEGER}
+        </foreach>
+      </trim>
+      <trim prefix="order_no = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=INTEGER} then #{item.orderNo,jdbcType=BIGINT}
+        </foreach>
+      </trim>
+      <trim prefix="pay_platform = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=INTEGER} then #{item.payPlatform,jdbcType=INTEGER}
+        </foreach>
+      </trim>
+      <trim prefix="platform_number = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=INTEGER} then #{item.platformNumber,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="platform_status = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=INTEGER} then #{item.platformStatus,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="create_time = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=INTEGER} then #{item.createTime,jdbcType=TIMESTAMP}
+        </foreach>
+      </trim>
+      <trim prefix="update_time = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=INTEGER} then #{item.updateTime,jdbcType=TIMESTAMP}
+        </foreach>
+      </trim>
+    </trim>
+    where id in
+    <foreach close=")" collection="list" item="item" open="(" separator=", ">
+      #{item.id,jdbcType=INTEGER}
+    </foreach>
+  </update>
+  <update id="updateBatchSelective" parameterType="java.util.List">
+    <!--@mbg.generated-->
+    update mmall_pay_info
+    <trim prefix="set" suffixOverrides=",">
+      <trim prefix="user_id = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.userId != null">
+            when id = #{item.id,jdbcType=INTEGER} then #{item.userId,jdbcType=INTEGER}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="order_no = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.orderNo != null">
+            when id = #{item.id,jdbcType=INTEGER} then #{item.orderNo,jdbcType=BIGINT}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="pay_platform = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.payPlatform != null">
+            when id = #{item.id,jdbcType=INTEGER} then #{item.payPlatform,jdbcType=INTEGER}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="platform_number = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.platformNumber != null">
+            when id = #{item.id,jdbcType=INTEGER} then #{item.platformNumber,jdbcType=VARCHAR}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="platform_status = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.platformStatus != null">
+            when id = #{item.id,jdbcType=INTEGER} then #{item.platformStatus,jdbcType=VARCHAR}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="create_time = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.createTime != null">
+            when id = #{item.id,jdbcType=INTEGER} then #{item.createTime,jdbcType=TIMESTAMP}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="update_time = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.updateTime != null">
+            when id = #{item.id,jdbcType=INTEGER} then #{item.updateTime,jdbcType=TIMESTAMP}
+          </if>
+        </foreach>
+      </trim>
+    </trim>
+    where id in
+    <foreach close=")" collection="list" item="item" open="(" separator=", ">
+      #{item.id,jdbcType=INTEGER}
+    </foreach>
+  </update>
+  <insert id="batchInsert" keyColumn="id" keyProperty="id" parameterType="map" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into mmall_pay_info
+    (user_id, order_no, pay_platform, platform_number, platform_status, create_time, 
+      update_time)
+    values
+    <foreach collection="list" item="item" separator=",">
+      (#{item.userId,jdbcType=INTEGER}, #{item.orderNo,jdbcType=BIGINT}, #{item.payPlatform,jdbcType=INTEGER}, 
+        #{item.platformNumber,jdbcType=VARCHAR}, #{item.platformStatus,jdbcType=VARCHAR}, 
+        #{item.createTime,jdbcType=TIMESTAMP}, #{item.updateTime,jdbcType=TIMESTAMP})
+    </foreach>
+  </insert>
+  <insert id="insertOrUpdate" keyColumn="id" keyProperty="id" parameterType="org.seckill.entity.MmallPayInfo" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into mmall_pay_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      user_id,
+      order_no,
+      pay_platform,
+      platform_number,
+      platform_status,
+      create_time,
+      update_time,
+    </trim>
+    values
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      #{userId,jdbcType=INTEGER},
+      #{orderNo,jdbcType=BIGINT},
+      #{payPlatform,jdbcType=INTEGER},
+      #{platformNumber,jdbcType=VARCHAR},
+      #{platformStatus,jdbcType=VARCHAR},
+      #{createTime,jdbcType=TIMESTAMP},
+      #{updateTime,jdbcType=TIMESTAMP},
+    </trim>
+    on duplicate key update 
+    <trim suffixOverrides=",">
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      user_id = #{userId,jdbcType=INTEGER},
+      order_no = #{orderNo,jdbcType=BIGINT},
+      pay_platform = #{payPlatform,jdbcType=INTEGER},
+      platform_number = #{platformNumber,jdbcType=VARCHAR},
+      platform_status = #{platformStatus,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+    </trim>
+  </insert>
+  <insert id="insertOrUpdateSelective" keyColumn="id" keyProperty="id" parameterType="org.seckill.entity.MmallPayInfo" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into mmall_pay_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="orderNo != null">
+        order_no,
+      </if>
+      <if test="payPlatform != null">
+        pay_platform,
+      </if>
+      <if test="platformNumber != null">
+        platform_number,
+      </if>
+      <if test="platformStatus != null">
+        platform_status,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    values
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="orderNo != null">
+        #{orderNo,jdbcType=BIGINT},
+      </if>
+      <if test="payPlatform != null">
+        #{payPlatform,jdbcType=INTEGER},
+      </if>
+      <if test="platformNumber != null">
+        #{platformNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="platformStatus != null">
+        #{platformStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+    on duplicate key update 
+    <trim suffixOverrides=",">
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="orderNo != null">
+        order_no = #{orderNo,jdbcType=BIGINT},
+      </if>
+      <if test="payPlatform != null">
+        pay_platform = #{payPlatform,jdbcType=INTEGER},
+      </if>
+      <if test="platformNumber != null">
+        platform_number = #{platformNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="platformStatus != null">
+        platform_status = #{platformStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+</mapper>

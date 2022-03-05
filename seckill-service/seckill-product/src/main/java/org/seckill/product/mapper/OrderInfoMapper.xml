@@ -1,0 +1,339 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.seckill.product.mapper.OrderInfoMapper">
+  <resultMap id="BaseResultMap" type="org.seckill.entity.OrderInfo">
+    <!--@mbg.generated-->
+    <!--@Table order_info-->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="user_id" jdbcType="BIGINT" property="userId" />
+    <result column="goods_id" jdbcType="BIGINT" property="goodsId" />
+    <result column="delivery_addr_id" jdbcType="BIGINT" property="deliveryAddrId" />
+    <result column="goods_name" jdbcType="VARCHAR" property="goodsName" />
+    <result column="goods_count" jdbcType="INTEGER" property="goodsCount" />
+    <result column="goods_price" jdbcType="DECIMAL" property="goodsPrice" />
+    <result column="order_channel" jdbcType="TINYINT" property="orderChannel" />
+    <result column="status" jdbcType="TINYINT" property="status" />
+    <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
+    <result column="pay_date" jdbcType="TIMESTAMP" property="payDate" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, user_id, goods_id, delivery_addr_id, goods_name, goods_count, goods_price, order_channel, 
+    `status`, create_date, pay_date
+  </sql>
+  <update id="updateBatch" parameterType="java.util.List">
+    <!--@mbg.generated-->
+    update order_info
+    <trim prefix="set" suffixOverrides=",">
+      <trim prefix="user_id = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.userId,jdbcType=BIGINT}
+        </foreach>
+      </trim>
+      <trim prefix="goods_id = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.goodsId,jdbcType=BIGINT}
+        </foreach>
+      </trim>
+      <trim prefix="delivery_addr_id = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.deliveryAddrId,jdbcType=BIGINT}
+        </foreach>
+      </trim>
+      <trim prefix="goods_name = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.goodsName,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="goods_count = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.goodsCount,jdbcType=INTEGER}
+        </foreach>
+      </trim>
+      <trim prefix="goods_price = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.goodsPrice,jdbcType=DECIMAL}
+        </foreach>
+      </trim>
+      <trim prefix="order_channel = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.orderChannel,jdbcType=TINYINT}
+        </foreach>
+      </trim>
+      <trim prefix="`status` = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.status,jdbcType=TINYINT}
+        </foreach>
+      </trim>
+      <trim prefix="create_date = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.createDate,jdbcType=TIMESTAMP}
+        </foreach>
+      </trim>
+      <trim prefix="pay_date = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.payDate,jdbcType=TIMESTAMP}
+        </foreach>
+      </trim>
+    </trim>
+    where id in
+    <foreach close=")" collection="list" item="item" open="(" separator=", ">
+      #{item.id,jdbcType=BIGINT}
+    </foreach>
+  </update>
+  <update id="updateBatchSelective" parameterType="java.util.List">
+    <!--@mbg.generated-->
+    update order_info
+    <trim prefix="set" suffixOverrides=",">
+      <trim prefix="user_id = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.userId != null">
+            when id = #{item.id,jdbcType=BIGINT} then #{item.userId,jdbcType=BIGINT}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="goods_id = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.goodsId != null">
+            when id = #{item.id,jdbcType=BIGINT} then #{item.goodsId,jdbcType=BIGINT}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="delivery_addr_id = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.deliveryAddrId != null">
+            when id = #{item.id,jdbcType=BIGINT} then #{item.deliveryAddrId,jdbcType=BIGINT}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="goods_name = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.goodsName != null">
+            when id = #{item.id,jdbcType=BIGINT} then #{item.goodsName,jdbcType=VARCHAR}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="goods_count = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.goodsCount != null">
+            when id = #{item.id,jdbcType=BIGINT} then #{item.goodsCount,jdbcType=INTEGER}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="goods_price = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.goodsPrice != null">
+            when id = #{item.id,jdbcType=BIGINT} then #{item.goodsPrice,jdbcType=DECIMAL}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="order_channel = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.orderChannel != null">
+            when id = #{item.id,jdbcType=BIGINT} then #{item.orderChannel,jdbcType=TINYINT}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="`status` = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.status != null">
+            when id = #{item.id,jdbcType=BIGINT} then #{item.status,jdbcType=TINYINT}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="create_date = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.createDate != null">
+            when id = #{item.id,jdbcType=BIGINT} then #{item.createDate,jdbcType=TIMESTAMP}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="pay_date = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.payDate != null">
+            when id = #{item.id,jdbcType=BIGINT} then #{item.payDate,jdbcType=TIMESTAMP}
+          </if>
+        </foreach>
+      </trim>
+    </trim>
+    where id in
+    <foreach close=")" collection="list" item="item" open="(" separator=", ">
+      #{item.id,jdbcType=BIGINT}
+    </foreach>
+  </update>
+  <insert id="batchInsert" keyColumn="id" keyProperty="id" parameterType="map" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into order_info
+    (user_id, goods_id, delivery_addr_id, goods_name, goods_count, goods_price, order_channel, 
+      `status`, create_date, pay_date)
+    values
+    <foreach collection="list" item="item" separator=",">
+      (#{item.userId,jdbcType=BIGINT}, #{item.goodsId,jdbcType=BIGINT}, #{item.deliveryAddrId,jdbcType=BIGINT}, 
+        #{item.goodsName,jdbcType=VARCHAR}, #{item.goodsCount,jdbcType=INTEGER}, #{item.goodsPrice,jdbcType=DECIMAL}, 
+        #{item.orderChannel,jdbcType=TINYINT}, #{item.status,jdbcType=TINYINT}, #{item.createDate,jdbcType=TIMESTAMP}, 
+        #{item.payDate,jdbcType=TIMESTAMP})
+    </foreach>
+  </insert>
+  <insert id="insertOrUpdate" keyColumn="id" keyProperty="id" parameterType="org.seckill.entity.OrderInfo" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into order_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      user_id,
+      goods_id,
+      delivery_addr_id,
+      goods_name,
+      goods_count,
+      goods_price,
+      order_channel,
+      `status`,
+      create_date,
+      pay_date,
+    </trim>
+    values
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      #{userId,jdbcType=BIGINT},
+      #{goodsId,jdbcType=BIGINT},
+      #{deliveryAddrId,jdbcType=BIGINT},
+      #{goodsName,jdbcType=VARCHAR},
+      #{goodsCount,jdbcType=INTEGER},
+      #{goodsPrice,jdbcType=DECIMAL},
+      #{orderChannel,jdbcType=TINYINT},
+      #{status,jdbcType=TINYINT},
+      #{createDate,jdbcType=TIMESTAMP},
+      #{payDate,jdbcType=TIMESTAMP},
+    </trim>
+    on duplicate key update 
+    <trim suffixOverrides=",">
+      <if test="id != null">
+        id = #{id,jdbcType=BIGINT},
+      </if>
+      user_id = #{userId,jdbcType=BIGINT},
+      goods_id = #{goodsId,jdbcType=BIGINT},
+      delivery_addr_id = #{deliveryAddrId,jdbcType=BIGINT},
+      goods_name = #{goodsName,jdbcType=VARCHAR},
+      goods_count = #{goodsCount,jdbcType=INTEGER},
+      goods_price = #{goodsPrice,jdbcType=DECIMAL},
+      order_channel = #{orderChannel,jdbcType=TINYINT},
+      `status` = #{status,jdbcType=TINYINT},
+      create_date = #{createDate,jdbcType=TIMESTAMP},
+      pay_date = #{payDate,jdbcType=TIMESTAMP},
+    </trim>
+  </insert>
+  <insert id="insertOrUpdateSelective" keyColumn="id" keyProperty="id" parameterType="org.seckill.entity.OrderInfo" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into order_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="goodsId != null">
+        goods_id,
+      </if>
+      <if test="deliveryAddrId != null">
+        delivery_addr_id,
+      </if>
+      <if test="goodsName != null">
+        goods_name,
+      </if>
+      <if test="goodsCount != null">
+        goods_count,
+      </if>
+      <if test="goodsPrice != null">
+        goods_price,
+      </if>
+      <if test="orderChannel != null">
+        order_channel,
+      </if>
+      <if test="status != null">
+        `status`,
+      </if>
+      <if test="createDate != null">
+        create_date,
+      </if>
+      <if test="payDate != null">
+        pay_date,
+      </if>
+    </trim>
+    values
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="goodsId != null">
+        #{goodsId,jdbcType=BIGINT},
+      </if>
+      <if test="deliveryAddrId != null">
+        #{deliveryAddrId,jdbcType=BIGINT},
+      </if>
+      <if test="goodsName != null">
+        #{goodsName,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsCount != null">
+        #{goodsCount,jdbcType=INTEGER},
+      </if>
+      <if test="goodsPrice != null">
+        #{goodsPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="orderChannel != null">
+        #{orderChannel,jdbcType=TINYINT},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=TINYINT},
+      </if>
+      <if test="createDate != null">
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="payDate != null">
+        #{payDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+    on duplicate key update 
+    <trim suffixOverrides=",">
+      <if test="id != null">
+        id = #{id,jdbcType=BIGINT},
+      </if>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="goodsId != null">
+        goods_id = #{goodsId,jdbcType=BIGINT},
+      </if>
+      <if test="deliveryAddrId != null">
+        delivery_addr_id = #{deliveryAddrId,jdbcType=BIGINT},
+      </if>
+      <if test="goodsName != null">
+        goods_name = #{goodsName,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsCount != null">
+        goods_count = #{goodsCount,jdbcType=INTEGER},
+      </if>
+      <if test="goodsPrice != null">
+        goods_price = #{goodsPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="orderChannel != null">
+        order_channel = #{orderChannel,jdbcType=TINYINT},
+      </if>
+      <if test="status != null">
+        `status` = #{status,jdbcType=TINYINT},
+      </if>
+      <if test="createDate != null">
+        create_date = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="payDate != null">
+        pay_date = #{payDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+</mapper>
