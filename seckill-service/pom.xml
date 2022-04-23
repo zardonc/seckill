@@ -36,11 +36,6 @@
         </dependency>
         <dependency>
             <groupId>org.seckill</groupId>
-            <artifactId>seckill-model</artifactId>
-            <version>${seckill.project.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.seckill</groupId>
             <artifactId>seckill-tools</artifactId>
             <version>${seckill.project.version}</version>
         </dependency>

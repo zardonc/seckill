@@ -10,13 +10,12 @@
     <version>1.0</version>
 
     <modules>
-        <module>seckill-web</module>
         <module>seckill-service</module>
         <module>seckill-common</module>
-        <module>seckill-model</module>
         <module>seckill-gateway</module>
         <module>seckill-service-api</module>
         <module>seckill-tools</module>
+        <module>seckill-auth</module>
     </modules>
 
     <properties>
