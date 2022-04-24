@@ -25,6 +25,11 @@
             <artifactId>seckill-order-api</artifactId>
             <version>${seckill.project.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.seckill</groupId>
+            <artifactId>seckill-core-boot</artifactId>
+            <version>${seckill.project.version}</version>
+        </dependency>
     </dependencies>
 
 </project>
