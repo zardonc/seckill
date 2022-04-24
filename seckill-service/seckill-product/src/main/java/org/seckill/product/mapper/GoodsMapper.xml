@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.seckill.product.mapper.GoodsMapper">
-  <resultMap id="BaseResultMap" type="org.seckill.entity.Goods">
+  <resultMap id="BaseResultMap" type="org.seckill.product.entity.Goods">
     <!--@mbg.generated-->
     <!--@Table goods-->
     <id column="id" jdbcType="BIGINT" property="id" />
@@ -12,7 +12,7 @@
     <result column="goods_price" jdbcType="DECIMAL" property="goodsPrice" />
     <result column="goods_stock" jdbcType="INTEGER" property="goodsStock" />
   </resultMap>
-  <resultMap id="BaseResultMapGoodsVo" type="org.seckill.vo.GoodsVo">
+  <resultMap id="BaseResultMapGoodsVo" type="org.seckill.product.vo.GoodsVo">
     <id column="id" jdbcType="BIGINT" property="id" />
     <result column="goods_name" jdbcType="VARCHAR" property="goodsName" />
     <result column="goods_title" jdbcType="VARCHAR" property="goodsTitle" />
@@ -135,7 +135,7 @@
         #{item.goodsStock,jdbcType=INTEGER})
     </foreach>
   </insert>
-  <insert id="insertOrUpdate" keyColumn="id" keyProperty="id" parameterType="org.seckill.entity.Goods" useGeneratedKeys="true">
+  <insert id="insertOrUpdate" keyColumn="id" keyProperty="id" parameterType="org.seckill.product.entity.Goods" useGeneratedKeys="true">
     <!--@mbg.generated-->
     insert into goods
     <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -174,7 +174,7 @@
       goods_stock = #{goodsStock,jdbcType=INTEGER},
     </trim>
   </insert>
-  <insert id="insertOrUpdateSelective" keyColumn="id" keyProperty="id" parameterType="org.seckill.entity.Goods" useGeneratedKeys="true">
+  <insert id="insertOrUpdateSelective" keyColumn="id" keyProperty="id" parameterType="org.seckill.product.entity.Goods" useGeneratedKeys="true">
     <!--@mbg.generated-->
     insert into goods
     <trim prefix="(" suffix=")" suffixOverrides=",">

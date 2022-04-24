@@ -30,6 +30,12 @@
             <artifactId>seckill-core-boot</artifactId>
             <version>${seckill.project.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.seckill</groupId>
+            <artifactId>seckill-user-api</artifactId>
+            <version>1.0</version>
+            <scope>compile</scope>
+        </dependency>
     </dependencies>
 
 </project>

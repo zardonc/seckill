@@ -2,8 +2,8 @@ package org.seckill.product.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Param;
-import org.seckill.entity.Goods;
-import org.seckill.vo.GoodsVo;
+import org.seckill.product.entity.Goods;
+import org.seckill.product.vo.GoodsVo;
 
 import java.util.List;
 

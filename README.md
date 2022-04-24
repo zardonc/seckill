@@ -1,4 +1,5 @@
 # 商品秒杀商城
+> 基于Spring Cloud Alibaba
 ## 工程结构
 
 | 名称        | 说明              | 详情                                                    |

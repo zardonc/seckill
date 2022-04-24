@@ -1,8 +1,8 @@
 package org.seckill.product.service;
 
 import org.seckill.base.BaseResponse;
-import org.seckill.vo.GoodsDetailVo;
-import org.seckill.vo.GoodsVo;
+import org.seckill.product.vo.GoodsDetailVo;
+import org.seckill.product.vo.GoodsVo;
 
 import java.util.List;
 

@@ -4,12 +4,13 @@ import org.seckill.base.BaseResponse;
 import org.seckill.base.StatusCode;
 import org.seckill.entity.MiaoshaUser;
 import org.seckill.product.service.GoodsService;
-import org.seckill.vo.GoodsDetailVo;
-import org.seckill.vo.GoodsVo;
+import org.seckill.product.vo.GoodsDetailVo;
+import org.seckill.product.vo.GoodsVo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -48,8 +49,12 @@ public class GoodsController {
             return result;
         }
         GoodsDetailVo detailVo = result.getData();
-        detailVo.setUser(user);
         result.setData(detailVo);
         return result;
+    }
+
+    @GetMapping("/echo")
+    public String echo(String name) {
+        return "provider:" + name;
     }
 }
