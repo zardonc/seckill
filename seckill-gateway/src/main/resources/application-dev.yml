@@ -1,0 +1,40 @@
+server:
+  port: 7000
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+        ip: 127.0.0.1
+    gateway:
+      routes:
+        ## 测试网站跳转
+        - id: yudao # 路由编号
+          uri: http://www.iocoder.cn # 路由到的目标地址
+          predicates: # 断言，作为路由的匹配条件，对应 RouteDefinition 数组
+            - Path=/blog
+          filters:
+            - StripPrefix=1
+        - id: oschina # 路由的编号
+          uri: https://www.oschina.net # 路由的目标地址
+          predicates: # 断言，作为路由的匹配条件，对应 RouteDefinition 数组
+            - Path=/oschina
+          filters: # 过滤器，对请求进行拦截，实现自定义的功能，对应 FilterDefinition 数组
+            - StripPrefix=1
+        # 以服务名作为目标 URI 来自动创建动态路由
+        - id: ReactiveCompositeDiscoveryClient_seckill-order #路由的id
+          uri: lb://seckill-order #服务名
+          predicates:
+            - Path=/seckill-order/** #路由的匹配路径
+          filters:
+            - RewritePath=/seckill-order/(?<remaining>.*), /${remaining} # 将 /order-service 前缀剔除
+      # 与 Spring Cloud 注册中心的集成，对应 DiscoveryLocatorProperties 类
+#      #简化版
+#      discovery:
+#        locator:
+#          enabled: true # 开启与 Spring Cloud 注册中心的集成的功能。
+#          # 路由的目标地址的 Spring EL 表达式，默认为 "'lb://' + serviceId"
+#          # lb:// 前缀，表示将请求负载均衡转发到对应的服务的实例
+#          url-expression: "'lb://' + serviceId"

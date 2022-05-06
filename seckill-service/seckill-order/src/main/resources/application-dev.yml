@@ -1,8 +1,8 @@
 server:
-  port: 8020
+  port: 8010
 spring:
   application:
-    name: seckill-product
+    name: seckill-order
   cloud:
     nacos:
       # Nacos 作为注册中心的配置项，对应 NacosDiscoveryProperties 配置类
@@ -10,13 +10,12 @@ spring:
         server-addr: localhost:8848
         # 注册到 Nacos 的服务名。默认值为 ${spring.application.name}。
         service: ${spring.application.name}
-        # docker nacos需定义服务ip
         ip: 127.0.0.1
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/seckill?useUnicode=true&characterEncoding=utf-8
-    username: user
-    password: pass
+    username: root
+    password: password
     hikari:
       minimum-idle: 5
       connection-test-query: SELECT 1 FROM dual
@@ -32,7 +31,7 @@ mybatis-plus:
     map-underscore-to-camel-case: true
     cache-enabled: false
     log-impl: org.apache.ibatis.logging.slf4j.Slf4jImpl
-# 需要开放的端点。默认值只打开 health 和 info 两个端点。通过设置 * ，可以开放所有端点。
+# http://127.0.0.1:8080/actuator/health 各端点地址
 management:
   endpoints:
     web:
