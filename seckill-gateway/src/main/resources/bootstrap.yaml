@@ -1,0 +1,17 @@
+server:
+  port: 7100
+spring:
+  application:
+    name: seckill-gateway
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+        ip: 127.0.0.1
+      config:
+        namespace: # 使用的 Nacos 的命名空间，用于隔离配置环境
+        group: DEFAULT_GROUP # 使用的 Nacos 配置分组，默认为 DEFAULT_GROUP
+        name: ${spring.application.name}
+        #  使用的 Nacos 配置集的 dataId 的文件拓展名，同时也是 Nacos 配置集的配置格式
+        file-extension: yaml
+        server-addr: 127.0.0.1:8848
