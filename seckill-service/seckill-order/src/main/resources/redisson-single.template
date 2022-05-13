@@ -1,5 +1,5 @@
 singleServerConfig:
-  address: "redis://192.168.253.128:6379"
+  address: "redis://localhost:6379"
   database: 1
   idleConnectionTimeout: 10000
   connectTimeout: 10000

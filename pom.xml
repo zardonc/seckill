@@ -34,7 +34,7 @@
         <mybatis.ver>3.5.1</mybatis.ver>
         <disruptor.ver>3.4.4</disruptor.ver>
         <ttl.ver>2.13.0-Beta1</ttl.ver>
-        <redisson.ver>3.16.8</redisson.ver>
+        <redisson.ver>3.17.1</redisson.ver>
         <validator.ver>7.0.2.Final</validator.ver>
         <commons-codec.ver>1.15</commons-codec.ver>
         <curator.ver>5.2.0</curator.ver>

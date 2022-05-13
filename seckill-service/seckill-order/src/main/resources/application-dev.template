@@ -1,16 +1,4 @@
-server:
-  port: 8010
 spring:
-  application:
-    name: seckill-order
-  cloud:
-    nacos:
-      # Nacos 作为注册中心的配置项，对应 NacosDiscoveryProperties 配置类
-      discovery:
-        server-addr: localhost:8848
-        # 注册到 Nacos 的服务名。默认值为 ${spring.application.name}。
-        service: ${spring.application.name}
-        ip: 127.0.0.1
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/seckill?useUnicode=true&characterEncoding=utf-8
@@ -25,7 +13,7 @@ spring:
       idle-timeout: 30000
   redis:
     redisson:
-      file: classpath:redisson-cluster.yml
+      file: classpath:redisson-cluster.template
 mybatis-plus:
   configuration:
     map-underscore-to-camel-case: true
