@@ -16,7 +16,7 @@ spring:
         file-extension: yaml
         server-addr: 127.0.0.1:8848
         prefix: ${spring.application.name}
-        extension-configs[0]:
-          dataId: redisson-cluster.yaml
-          group: DEFAULT_GROUP
-          refresh: true
+        extension-configs:
+          - dataId: redisson-cluster.yaml
+            group: DEFAULT_GROUP
+            refresh: true
