@@ -1,4 +1,4 @@
-package org.seckill.redis_manager;
+package org.seckill.order.configuration;
 
 import org.seckill.utils.JSONUtil;
 import org.springframework.beans.BeansException;
