@@ -4,12 +4,14 @@ import org.seckill.entity.BusinessThread;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.BeanFactoryAware;
+import org.springframework.stereotype.Component;
 
 import java.util.Map;
 import java.util.Queue;
 import java.util.concurrent.*;
 
 // BeanFactoryAware，可以获取到 BeanFactory，可以用来手动注册 Bean
+@Component
 public class TaskPoolManager implements BeanFactoryAware {
     private final static int CORE_POOL_SIZE = Runtime.getRuntime().availableProcessors() + 1;
     private final static int MAX_POOL_SIZE = 64;

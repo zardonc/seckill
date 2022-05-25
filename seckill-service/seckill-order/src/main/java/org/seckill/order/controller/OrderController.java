@@ -1,16 +1,16 @@
 package org.seckill.order.controller;
 
+import org.seckill.order.service.TaskPoolManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.cloud.client.loadbalancer.LoadBalancerClient;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
+import java.util.Queue;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/order")
@@ -22,6 +22,8 @@ public class OrderController {
     private RestTemplate restTemplate;
     @Autowired
     private LoadBalancerClient loadBalancerClient;
+    @Autowired
+    private TaskPoolManager taskPoolManager;
 
     @GetMapping("/getService")
     public String getService(String name) {
@@ -45,6 +47,34 @@ public class OrderController {
     @PostMapping("/add")
     public Long add() {
         return System.currentTimeMillis() / 1000;
+    }
+
+    /**
+     * 功能描述: 模拟下单请求 入口
+     * 〈〉
+     * @Param: [id]
+     * @Return: java.lang.String
+     * @Author: lang
+     */
+    @GetMapping("/start/{id}")
+    public String start(@PathVariable Long id) {
+        //模拟的随机数
+        String orderNo = System.currentTimeMillis() + UUID.randomUUID().toString();
+        taskPoolManager.addOrders(orderNo);
+        return "Test ThreadPoolExecutor start";
+    }
+
+    /**
+     * 停止服务
+     * @param id
+     * @return
+     */
+    @GetMapping("/end/{id}")
+    public String end(@PathVariable Long id) {
+        taskPoolManager.shutdown();
+        Queue q = taskPoolManager.getMsgQueue();
+        System.out.println("关闭了线程服务，还有未处理的信息条数：" + q.size());
+        return "Test ThreadPoolExecutor start";
     }
 }
 
