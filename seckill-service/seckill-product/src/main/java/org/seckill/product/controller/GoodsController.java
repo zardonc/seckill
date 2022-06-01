@@ -18,6 +18,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 @RestController
 @RequestMapping("/api/goods")
@@ -54,7 +55,10 @@ public class GoodsController {
     }
 
     @GetMapping("/echo")
-    public String echo(String name) {
-        return "provider:" + name;
+    public String echo(String name) throws InterruptedException {
+        TimeUnit.MILLISECONDS.sleep(100L);
+        // 记录被调用的日志
+        log.info("[echo][被调用 name({})]", name);
+        return "provider: " + name;
     }
 }

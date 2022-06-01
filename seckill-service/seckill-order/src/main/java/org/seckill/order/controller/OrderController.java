@@ -1,5 +1,6 @@
 package org.seckill.order.controller;
 
+import org.seckill.feign.IProductClient;
 import org.seckill.order.service.TaskPoolManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
@@ -24,6 +25,8 @@ public class OrderController {
     private LoadBalancerClient loadBalancerClient;
     @Autowired
     private TaskPoolManager taskPoolManager;
+    @Autowired
+    private IProductClient iProductClient;
 
     @GetMapping("/getService")
     public String getService(String name) {
@@ -75,6 +78,14 @@ public class OrderController {
         Queue q = taskPoolManager.getMsgQueue();
         System.out.println("关闭了线程服务，还有未处理的信息条数：" + q.size());
         return "Test ThreadPoolExecutor start";
+    }
+
+    @GetMapping("/hello02")
+    public String feignTest(String name) {
+        // 使用 Feign 调用接口
+        String response = iProductClient.echo(name);
+        // 返回结果
+        return "consumer: " + response;
     }
 }
 
