@@ -28,12 +28,13 @@ public class SeckillOrderService {
         ExecutorService executorService = Executors.newCachedThreadPool();
         mergeJob();
         List<Future<OrderRequestResult>> futures = new ArrayList<>();
-        CountDownLatch countDownLatch = new CountDownLatch(10);
+        CountDownLatch countDownLatch = new CountDownLatch(10);// 制造并发场景
         for (int i = 0; i < 10; i++) {
             final Long orderId = i + 100L;
             final Long userId = Long.valueOf(i);
             Future<OrderRequestResult> requestResultFuture = executorService.submit(() -> {
                 countDownLatch.countDown();
+                countDownLatch.await(1, TimeUnit.SECONDS);
                 return countOperate(new OrderRequest(orderId, userId, 1));
             });
             futures.add(requestResultFuture);
@@ -51,18 +52,20 @@ public class SeckillOrderService {
 
     // 扣减库存操作
     public OrderRequestResult countOperate(OrderRequest orderRequest) throws InterruptedException {
-        // 阈值判断
-        // 队列创建判断
+        //TODO 阈值判断, 队列创建判断
         OrderRequestOps requestOps = new OrderRequestOps(orderRequest);
-        boolean result = orderQueue.offer(requestOps, 100L, TimeUnit.MILLISECONDS);
-        if (!result) {
-            return new OrderRequestResult(false, "系统繁忙");
-        }
-        synchronized (requestOps) {
+        synchronized (requestOps) {// requestOps局部变量在任务队列里也有引用，保证获取锁之后入队列
+            boolean result = orderQueue.offer(requestOps, 100L, TimeUnit.MILLISECONDS);
+            if (!result) {
+                return new OrderRequestResult(false, "系统繁忙");
+            }
             try {
                 requestOps.wait(200L);
-            } catch (InterruptedException e) {
-                return new OrderRequestResult(false, "等待超时");
+                if (requestOps.getOrderRequestResult() == null) {
+                    return new OrderRequestResult(false, "等待超时");
+                }
+            } catch (InterruptedException e) {// 超时
+                e.printStackTrace();
             }
         }
         return requestOps.getOrderRequestResult();
@@ -83,8 +86,13 @@ public class SeckillOrderService {
                     }
                     continue;
                 }
-                while (orderQueue.peek() != null) {
-                    list.add(orderQueue.poll());
+                int batchSize = orderQueue.size();
+                for (int i = 0; i < batchSize; i++) {
+                    try {
+                        list.add(orderQueue.poll(10L, TimeUnit.MILLISECONDS));
+                    } catch (InterruptedException e) {
+                        throw new RuntimeException(e);
+                    }
                 }
                 System.out.println(Thread.currentThread().getName() + " 合并扣减库存： " + list);
                 // 需扣减库存总数
@@ -102,18 +110,17 @@ public class SeckillOrderService {
                     });
                     continue;
                 }
-                // 总数大于当前库存
-                for (OrderRequestOps requestOps : list) {
+                for (OrderRequestOps requestOps : list) {// 下单总数大于当前库存
                     // 考虑排序后优先扣减订单数量较多的用户
                     int countCur = requestOps.getOrderRequest().getCount();
                     if (countCur <= stock) {
                         stock -= countCur;
                         requestOps.setOrderRequestResult(new OrderRequestResult(true, "ok"));
-                        synchronized (requestOps) {
-                            requestOps.notify();
-                        }
                     } else {
                         requestOps.setOrderRequestResult(new OrderRequestResult(false, "库存不足"));
+                    }
+                    synchronized (requestOps) { // 库存不足时通知，此处与添加入队列操作竞争锁
+                        requestOps.notify();
                     }
                 }
                 // 清空数组
