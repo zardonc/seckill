@@ -19,4 +19,12 @@
         <maven.compiler.target>11</maven.compiler.target>
     </properties>
 
+    <dependencies>
+        <dependency>
+            <groupId>org.seckill</groupId>
+            <artifactId>seckill-product-api</artifactId>
+            <version>${seckill.project.version}</version>
+        </dependency>
+    </dependencies>
+
 </project>

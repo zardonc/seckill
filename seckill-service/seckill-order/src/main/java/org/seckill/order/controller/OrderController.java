@@ -80,10 +80,20 @@ public class OrderController {
         return "Test ThreadPoolExecutor start";
     }
 
+    // feign申明式调用
     @GetMapping("/hello02")
     public String feignTest(String name) {
         // 使用 Feign 调用接口
         String response = iProductClient.echo(name);
+        // 返回结果
+        return "consumer: " + response;
+    }
+
+    // feign继承式调用
+    @GetMapping("/hello03")
+    public String feignTest2(String name) {
+        // 使用 Feign 调用接口
+        String response = iProductClient.echo2(name);
         // 返回结果
         return "consumer: " + response;
     }
