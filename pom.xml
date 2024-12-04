@@ -9,144 +9,39 @@
     <packaging>pom</packaging>
     <version>1.0</version>
     <modules>
-        <module>seckill-web</module>
-        <module>seckill-service</module>
-        <module>seckill-common</module>
-        <module>seckill-model</module>
-        <module>seckill-gateway</module>
+
     </modules>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <maven.compiler.source>11</maven.compiler.source>
-        <maven.compiler.target>11</maven.compiler.target>
-        <maven.plugin.version>3.9.0</maven.plugin.version>
-        <common-pool.ver>2.11.1</common-pool.ver>
-        <common3.ver>3.12.0</common3.ver>
-        <mysqlj.ver>8.0.28</mysqlj.ver>
-        <swagger.version>2.10.5</swagger.version>
-        <swagger.models.version>1.6.2</swagger.models.version>
-        <knife4j.version>2.0.9</knife4j.version>
-        <mybatis.ver>3.5.1</mybatis.ver>
-        <disruptor.ver>3.4.4</disruptor.ver>
-        <ttl.ver>2.13.0-Beta1</ttl.ver>
-        <redisson.ver>3.16.8</redisson.ver>
-        <validator.ver>7.0.2.Final</validator.ver>
-        <commons-codec.ver>1.15</commons-codec.ver>
-        <curator.ver>5.2.0</curator.ver>
-        <zookeeper.ver>3.7.0</zookeeper.ver>
-        <pagehelper.ver>1.4.1</pagehelper.ver>
-
-        <alibaba.nacos.version>2.0.4</alibaba.nacos.version>
-        <spring.boot.admin.version>2.6.2</spring.boot.admin.version>
-        <spring.plugin.version>2.0.0.RELEASE</spring.plugin.version>
-        <alibaba.cloud.version>2021.1</alibaba.cloud.version>
-        <spring.cloud.version>2020.0.4</spring.cloud.version>
-        <spring.boot.version>2.5.6</spring.boot.version>
+        <spring-cloud.ver>2023.0.4</spring-cloud.ver>
+        <springboot.ver>3.3.6</springboot.ver>
     </properties>
 
     <dependencyManagement>
         <dependencies>
-            <dependency>
-                <groupId>org.springframework.plugin</groupId>
-                <artifactId>spring-plugin-core</artifactId>
-                <version>${spring.plugin.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework.plugin</groupId>
-                <artifactId>spring-plugin-metadata</artifactId>
-                <version>${spring.plugin.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-dependencies</artifactId>
-                <version>${spring.boot.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
+            <!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-dependencies -->
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
-                <version>${spring.cloud.version}</version>
+                <version>${spring-cloud.ver}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+            <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-parent -->
             <dependency>
-                <groupId>com.alibaba.cloud</groupId>
-                <artifactId>spring-cloud-alibaba-dependencies</artifactId>
-                <version>${alibaba.cloud.version}</version>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-parent</artifactId>
+                <version>${springboot.ver}</version>
                 <type>pom</type>
-                <scope>import</scope>
             </dependency>
-            <dependency>
-                <groupId>io.spring.platform</groupId>
-                <artifactId>platform-bom</artifactId>
-                <version>${spring.platform.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
+
         </dependencies>
     </dependencyManagement>
 
-    <dependencies>
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <scope>provided</scope>
-        </dependency>
-    </dependencies>
-
     <build>
-        <finalName>${project.name}</finalName>
-        <resources>
-            <resource>
-                <directory>src/main/resources</directory>
-            </resource>
-            <resource>
-                <directory>src/main/java</directory>
-                <includes>
-                    <include>**/*.xml</include>
-                </includes>
-            </resource>
-        </resources>
-        <pluginManagement>
-            <plugins>
-                <plugin>
-                    <groupId>org.springframework.boot</groupId>
-                    <artifactId>spring-boot-maven-plugin</artifactId>
-                    <version>${spring.boot.version}</version>
-                    <configuration>
-                        <finalName>${project.build.finalName}</finalName>
-                    </configuration>
-                    <executions>
-                        <execution>
-                            <goals>
-                                <goal>repackage</goal>
-                            </goals>
-                        </execution>
-                    </executions>
-                </plugin>
-            </plugins>
-        </pluginManagement>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-            <plugin>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>${maven.plugin.version}</version>
-                <configuration>
-                    <source>${java.version}</source>
-                    <target>${java.version}</target>
-                    <encoding>UTF-8</encoding>
-                    <compilerArgs>
-                        <arg>-parameters</arg>
-                    </compilerArgs>
-                </configuration>
-            </plugin>
-        </plugins>
+
     </build>
 
 </project>
