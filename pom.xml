@@ -22,6 +22,10 @@
         <maven.compiler.target>17</maven.compiler.target>
         <spring-cloud.ver>2023.0.4</spring-cloud.ver>
         <springboot.ver>3.3.6</springboot.ver>
+        <spring-admin.ver>3.4.0</spring-admin.ver>
+        <hibernate.ver>7.0.0.Beta2</hibernate.ver>
+        <mysql-connector-j.ver>9.1.0</mysql-connector-j.ver>
+        <lombok.ver>1.18.36</lombok.ver>
     </properties>
 
     <dependencyManagement>
@@ -40,6 +44,37 @@
                 <artifactId>spring-boot-starter-parent</artifactId>
                 <version>${springboot.ver}</version>
                 <type>pom</type>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/de.codecentric/spring-boot-admin-starter-server -->
+            <dependency>
+                <groupId>de.codecentric</groupId>
+                <artifactId>spring-boot-admin-starter-server</artifactId>
+                <version>${spring-admin.ver}</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/de.codecentric/spring-boot-admin-starter-client -->
+            <dependency>
+                <groupId>de.codecentric</groupId>
+                <artifactId>spring-boot-admin-starter-client</artifactId>
+                <version>${spring-admin.ver}</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/org.hibernate.orm/hibernate-core -->
+            <dependency>
+                <groupId>org.hibernate.orm</groupId>
+                <artifactId>hibernate-core</artifactId>
+                <version>${hibernate.ver}</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/com.mysql/mysql-connector-j -->
+            <dependency>
+                <groupId>com.mysql</groupId>
+                <artifactId>mysql-connector-j</artifactId>
+                <version>${mysql-connector-j.ver}</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${lombok.ver}</version>
+                <scope>provided</scope>
             </dependency>
 
         </dependencies>
