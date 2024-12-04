@@ -9,12 +9,17 @@
     <packaging>pom</packaging>
     <version>1.0</version>
     <modules>
-
+        <module>sec-web</module>
+        <module>sec-common</module>
+        <module>sec-auth</module>
+        <module>sec-gateway</module>
     </modules>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
         <spring-cloud.ver>2023.0.4</spring-cloud.ver>
         <springboot.ver>3.3.6</springboot.ver>
     </properties>
