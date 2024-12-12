@@ -13,6 +13,8 @@
         <module>sec-common</module>
         <module>sec-auth</module>
         <module>sec-gateway</module>
+        <module>sec-order</module>
+        <module>sec-admin</module>
     </modules>
 
     <properties>
