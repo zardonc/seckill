@@ -25,9 +25,10 @@
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <spring-cloud.ver>2023.0.4</spring-cloud.ver>
-        <springboot.ver>3.3.6</springboot.ver>
+        <springboot.ver>3.3.7</springboot.ver>
+        <springboot-dep.ver>3.3.7</springboot-dep.ver>
         <spring-admin.ver>3.4.0</spring-admin.ver>
-        <hibernate.ver>7.0.0.Beta3</hibernate.ver>
+        <hibernate-valid.ver>8.0.2.Final</hibernate-valid.ver>
         <mysql-connector-j.ver>9.1.0</mysql-connector-j.ver>
         <lombok.ver>1.18.36</lombok.ver>
         <redisson.ver>3.40.1</redisson.ver>
@@ -40,6 +41,14 @@
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
                 <version>${spring-cloud.ver}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-dependencies -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${springboot-dep.ver}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -62,11 +71,11 @@
                 <artifactId>spring-boot-admin-starter-client</artifactId>
                 <version>${spring-admin.ver}</version>
             </dependency>
-            <!-- https://mvnrepository.com/artifact/org.hibernate.orm/hibernate-core -->
+            <!-- https://mvnrepository.com/artifact/org.hibernate.validator/hibernate-validator -->
             <dependency>
-                <groupId>org.hibernate.orm</groupId>
-                <artifactId>hibernate-core</artifactId>
-                <version>${hibernate.ver}</version>
+                <groupId>org.hibernate.validator</groupId>
+                <artifactId>hibernate-validator</artifactId>
+                <version>${hibernate-valid.ver}</version>
             </dependency>
             <!-- https://mvnrepository.com/artifact/com.mysql/mysql-connector-j -->
             <dependency>
