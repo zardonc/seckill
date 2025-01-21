@@ -12,3 +12,8 @@ spring:
       connection-timeout: 30000
       maximum-pool-size: 20
       max-lifetime: 60000
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
